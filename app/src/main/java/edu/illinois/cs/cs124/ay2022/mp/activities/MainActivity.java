@@ -56,6 +56,8 @@ public final class MainActivity extends AppCompatActivity
   // Max and default map zoom levels
   public static final double MAP_MIN_ZOOM = 12.0;
   public static final double MAP_DEFAULT_ZOOM = 17.0;
+  private static final GeoPoint DEFAULT_CENTER =
+      new GeoPoint(40.10986682167534, -88.22831928981661);
 
   /*
    * onCreate is the first method called when this activity is created.
@@ -71,7 +73,7 @@ public final class MainActivity extends AppCompatActivity
 
     // Load the layout for this activity and set the title
     setContentView(R.layout.activity_main);
-    setTitle("Favorite Place");
+    setTitle("Favorite Places");
 
     // Find the MapView component in the layout and configure it properly
     // Also save the reference for later use
@@ -95,6 +97,7 @@ public final class MainActivity extends AppCompatActivity
     // Set the current map zoom level to the default
     IMapController mapController = mapView.getController();
     mapController.setZoom(MAP_DEFAULT_ZOOM);
+    mapController.setCenter(DEFAULT_CENTER);
   }
 
   /*
