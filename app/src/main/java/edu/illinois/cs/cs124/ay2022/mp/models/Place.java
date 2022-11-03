@@ -63,7 +63,7 @@ public final class Place {
   public String getDescription() {
     return description;
   }
-  public static List<Place> search(List<Place> places, final String search) {
+  public static List<Place> search(final List<Place> places, final String search) {
     assert false;
     return null;
   }
