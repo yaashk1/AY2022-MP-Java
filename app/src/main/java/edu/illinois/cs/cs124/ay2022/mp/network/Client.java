@@ -93,6 +93,9 @@ public final class Client {
     requestQueue.add(getPlacesRequest);
   }
 
+  public void postFavoritePlace(final Place place, final Consumer<ResultMightThrow<List<Place>>> callback) {
+
+  }
   /*
    * You do not need to modify the code below.
    * However, you may want to understand how it works.

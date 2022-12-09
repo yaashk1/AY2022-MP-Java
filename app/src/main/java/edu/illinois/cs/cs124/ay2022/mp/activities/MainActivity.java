@@ -218,6 +218,19 @@ public final class MainActivity extends AppCompatActivity
     mapView.invalidate();
   }
 
+  public void updatedRestaurant(final List<Place> showPlaces) {
+    for (int i = 0; i < mapView.getOverlays().size(); i++) {
+      Overlay existing = mapView.getOverlays().get(i);
+      if (!(existing instanceof Marker)) {
+        continue;
+      }
+      Marker marker = (Marker) existing;
+      marker.closeInfoWindow();
+    }
+    mapView.getOverlays().clear();
+    String newOpenPlace = null;
+  }
+
   @Override
   public boolean onQueryTextSubmit(final String text) {
     return false;
@@ -226,7 +239,9 @@ public final class MainActivity extends AppCompatActivity
   @Override
   public boolean onQueryTextChange(final String text) {
     List<Place> ans = Place.search(allPlaces, text);
-    if (ans.isEmpty()) {
+    if (text.equals("REST")) {
+      updatedRestaurant(allPlaces);
+    } else if (ans.isEmpty()) {
       updateShownPlaces(allPlaces);
     } else {
       updateShownPlaces(ans);
